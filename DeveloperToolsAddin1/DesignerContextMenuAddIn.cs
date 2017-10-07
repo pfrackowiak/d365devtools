@@ -55,6 +55,7 @@
                 if (this.metadataProvider == null)
                 {
                     this.metadataProvider = DesignMetaModelService.Instance.CurrentMetadataProvider;
+                    //DesignMetaModelService.Instance.CurrentConfiguration
                 }
                 return this.metadataProvider;
             }
@@ -150,6 +151,7 @@
                 return;
             }
 
+            Microsoft.Dynamics.AX.Data.Management.ManagedSync x = new Dynamics.AX.Data.Management.ManagedSync();
             var metaModelProviders = ServiceLocator.GetService(typeof(IMetaModelProviders)) as IMetaModelProviders;
             if (metaModelProviders == null)
                 throw new Exception("A");
@@ -167,6 +169,7 @@
 
             // Update the file
             metaModelService.UpdateTable(table, new ModelSaveInfo(model));
+
         }
 
         #region Callbacks
